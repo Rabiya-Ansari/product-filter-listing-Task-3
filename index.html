@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Listing</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛍️ Product Store</h1>
+            <p>Discover amazing products from various sellers</p>
+        </header>
+
+        <div class="filters">
+            <div class="filter-group">
+                <label>Category:</label>
+                <select id="categoryFilter">
+                    <option value="all">All Categories</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Clothing">Clothing</option>
+                    <option value="Books">Books</option>
+                    <option value="Home">Home & Garden</option>
+                    <option value="Sports">Sports</option>
+                </select>
+
+                <label>Max Price:</label>
+                <input type="number" id="priceFilter" placeholder="Enter max price" min="0">
+
+                <label>Search:</label>
+                <input type="text" id="searchFilter" placeholder="Search products...">
+
+                <button onclick="applyFilters()">Apply Filters</button>
+                <button onclick="resetFilters()">Reset</button>
+            </div>
+        </div>
+
+        <div class="product-grid" id="productGrid"></div>
+
+        <div class="navigation">
+            <button class="nav-btn" id="prevBtn" onclick="previousPage()">← Previous</button>
+            <div class="page-info" id="pageInfo"></div>
+            <button class="nav-btn" id="nextBtn" onclick="nextPage()">Next →</button>
+        </div>
+    </div>
+
+   <script src="/script.js"></script>
+</body>
+</html>
