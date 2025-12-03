@@ -1,9 +1,9 @@
-:root{
-    --dark:#0C0C0C;
-    --maroon:#481E14;
-    --orange:#9B3922;
-    --coral:#F2613F;
-    --light:#ECDFCC;
+:root {
+    --dark: #0C0C0C;
+    --maroon: #481E14;
+    --orange: #9B3922;
+    --coral: #F2613F;
+    --light: #ECDFCC;
 }
 
 * {
@@ -231,22 +231,43 @@ h1 {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-30px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @media (max-width: 768px) {
-    h1 { font-size: 2em; }
+    h1 {
+        font-size: 2em;
+    }
 
     .filter-group {
         flex-direction: column;

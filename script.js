@@ -7,7 +7,7 @@ const products = [
     { id: 5, title: "Coffee Maker", owner: "Home Essentials", price: 129.99, category: "Home", icon: "☕", image: "images/p5.png" },
     { id: 6, title: "The Great Novel", owner: "BookWorld", price: 24.99, category: "Books", icon: "📚", image: "images/p6.png" },
     { id: 7, title: "Laptop Backpack", owner: "TravelGear", price: 49.99, category: "Electronics", icon: "🎒", image: "images/p7.png" },
-    { id: 8, title: "Yoga Mat", owner: "FitLife", price: 34.99, category: "Sports", icon: "🧘",image: "images/p8.png"  },
+    { id: 8, title: "Yoga Mat", owner: "FitLife", price: 34.99, category: "Sports", icon: "🧘", image: "images/p8.png" },
     { id: 9, title: "LED Desk Lamp", owner: "Bright Ideas", price: 39.99, category: "Home", icon: "💡", image: "images/p9.png" },
     { id: 10, title: "Bluetooth Speaker", owner: "SoundWave", price: 69.99, category: "Electronics", icon: "🔊", image: "images/p10.png" },
     { id: 11, title: "Winter Coat", owner: "Warm Wear", price: 149.99, category: "Clothing", icon: "🧥", image: "images/p11.png" },
