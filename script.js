@@ -1,110 +1,174 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const products = [
+        { id: 1, title: "Botanical Glow Serum", owner: "PureSkin", category: "Skincare", price: 24.99, img: "./images/p1.png", sku: "PS-001", desc: "Lightweight vitamin C serum for radiant skin." },
+        { id: 2, title: "Hydra Mist Toner", owner: "GreenAura", category: "Skincare", price: 14.50, img: "./images/p2.png", sku: "GA-010", desc: "Refreshing mist toner to balance and hydrate." },
+        { id: 3, title: "Velvet Lipstick - Rose", owner: "LuxeMake", category: "Makeup", price: 12.00, img: "./images/p3.png", sku: "LM-501", desc: "Silky matte lipstick with lasting pigment." },
+        { id: 4, title: "Nourish Hair Oil", owner: "HairBloom", category: "Hair", price: 19.99, img: "./images/p4.png", sku: "HB-220", desc: "Light oil blend for shine and nourishment." },
+        { id: 5, title: "Bamboo Face Brush", owner: "EcoTools", category: "Accessories", price: 8.99, img: "./images/p5.png", sku: "ET-07", desc: "Soft bamboo brush for gentle exfoliation." },
+        { id: 6, title: "Glow Highlighter Stick", owner: "LuxeMake", category: "Makeup", price: 15.00, img: "./images/p6.png", sku: "LM-302", desc: "Creamy stick highlighter for instant glow." },
+        { id: 7, title: "Aloe Recovery Gel", owner: "PureSkin", category: "Skincare", price: 11.99, img: "./images/p7.png", sku: "PS-045", desc: "Cooling aloe gel for soothing irritated skin." },
+        { id: 8, title: "Charcoal Detox Mask", owner: "GreenAura", category: "Skincare", price: 17.50, img: "./images/p8.png", sku: "GA-088", desc: "Purifying mask to clear pores and balance oil." },
+        { id: 9, title: "Blush Tint Peach", owner: "LuxeMake", category: "Makeup", price: 9.99, img: "./images/p9.png", sku: "LM-241", desc: "Light cream blush tint for a natural flush." },
+        { id: 10, title: "Keratin Repair Shampoo", owner: "HairBloom", category: "Hair", price: 13.49, img: "./images/p10.png", sku: "HB-341", desc: "Strengthening shampoo infused with keratin." },
+        { id: 11, title: "Volumizing Hair Mousse", owner: "HairBloom", category: "Hair", price: 10.99, img: "./images/p11.png", sku: "HB-412", desc: "Lightweight mousse for added volume & lift." },
+        { id: 12, title: "Eco Cotton Pads", owner: "EcoTools", category: "Accessories", price: 4.99, img: "./images/p12.png", sku: "ET-15", desc: "Reusable soft cotton pads for makeup removal." },
+        { id: 13, title: "Compact Travel Mirror", owner: "EcoTools", category: "Accessories", price: 6.50, img: "./images/p13.png", sku: "ET-22", desc: "Portable foldable mirror for quick touch-ups." },
+        { id: 14, title: "Matte Nude Lipstick", owner: "LuxeMake", category: "Makeup", price: 13.00, img: "./images/p14.png", sku: "LM-602", desc: "Long-lasting matte lipstick in nude shade." },
+        { id: 15, title: "Hydrating Face Cream", owner: "PureSkin", category: "Skincare", price: 21.99, img: "./images/p15.png", sku: "PS-078", desc: "Daily moisturizer for soft and hydrated skin." }
+    ];
 
-const products = [
-    { id: 1, title: "Wireless Headphones", owner: "TechGear Pro", price: 89.99, category: "Electronics", icon: "🎧", image: "images/p1.png" },
-    { id: 2, title: "Smart Watch", owner: "Digital Dreams", price: 199.99, category: "Electronics", icon: "⌚", image: "images/p2.png" },
-    { id: 3, title: "Denim Jacket", owner: "Fashion Hub", price: 59.99, category: "Clothing", icon: "🧥", image: "images/p3.png" },
-    { id: 4, title: "Running Shoes", owner: "SportZone", price: 79.99, category: "Sports", icon: "👟", image: "images/p4.png" },
-    { id: 5, title: "Coffee Maker", owner: "Home Essentials", price: 129.99, category: "Home", icon: "☕", image: "images/p5.png" },
-    { id: 6, title: "The Great Novel", owner: "BookWorld", price: 24.99, category: "Books", icon: "📚", image: "images/p6.png" },
-    { id: 7, title: "Laptop Backpack", owner: "TravelGear", price: 49.99, category: "Electronics", icon: "🎒", image: "images/p7.png" },
-    { id: 8, title: "Yoga Mat", owner: "FitLife", price: 34.99, category: "Sports", icon: "🧘", image: "images/p8.png" },
-    { id: 9, title: "LED Desk Lamp", owner: "Bright Ideas", price: 39.99, category: "Home", icon: "💡", image: "images/p9.png" },
-    { id: 10, title: "Bluetooth Speaker", owner: "SoundWave", price: 69.99, category: "Electronics", icon: "🔊", image: "images/p10.png" },
-    { id: 11, title: "Winter Coat", owner: "Warm Wear", price: 149.99, category: "Clothing", icon: "🧥", image: "images/p11.png" },
-    { id: 12, title: "Programming Guide", owner: "CodeBooks", price: 44.99, category: "Books", icon: "💻", image: "images/p12.png" },
-    { id: 13, title: "Kitchen Knife Set", owner: "Chef's Choice", price: 89.99, category: "Home", icon: "🔪", image: "images/p13.png" },
-    { id: 14, title: "Tennis Racket", owner: "ProSports", price: 119.99, category: "Sports", icon: "🎾", image: "images/p14.png" },
-    { id: 15, title: "Sunglasses", owner: "Style Co", price: 54.99, category: "Clothing", icon: "🕶️", image: "images/p15.png" }
-];
+    let startIndex = 0;
+    const showCount = 3;
+    const container = document.getElementById('productGrid');
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const cartSidebar = document.getElementById('cartSidebar');
+    const cartList = document.getElementById('cartList');
+    const cartBtn = document.getElementById('cartBtn');
+    const closeCartBtn = document.getElementById('closeCart');
+    const subtotalEl = document.getElementById('subtotal');
+    const totalEl = document.getElementById('total');
 
+    const searchInput = document.getElementById('search');
+    const categoryList = document.getElementById('categoryList');
+    const sortBy = document.getElementById('sortBy');
 
-let filteredProducts = [...products];
-let currentPage = 1;
-const productsPerPage = 6;
+    let cart = [];
+    let filteredProducts = [...products];
 
-function displayProducts() {
-    const grid = document.getElementById('productGrid');
-    const startIndex = (currentPage - 1) * productsPerPage;
-    const endIndex = startIndex + productsPerPage;
-    const pageProducts = filteredProducts.slice(startIndex, endIndex);
+    function renderProducts() {
+        container.innerHTML = '';
+        const visible = filteredProducts.slice(startIndex, startIndex + showCount);
 
-    if (pageProducts.length === 0) {
-        grid.innerHTML = '<div class="no-products">No products found matching your criteria.</div>';
-    } else {
-        grid.innerHTML = pageProducts.map((product, index) => `
-            <div class="product-card" style="animation-delay: ${index * 0.1}s">
+        visible.forEach(p => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.innerHTML = `
+                <img src="${p.img}" alt="${p.title}">
+                <h3>${p.title}</h3>
+                <p>${p.owner}</p>
+                <p><strong>$${p.price.toFixed(2)}</strong></p>
+                <button class="add-cart" data-id="${p.id}">Add to Cart</button>
+            `;
+            container.appendChild(card);
+        });
 
-                <div class="product-image">
-                    ${product.image
-                ? `<img src="${product.image}" alt="${product.title}" style="width:100%; height:100%; object-fit:cover;">`
-                : `${product.icon}`
-            }
-                </div>
+        prevBtn.disabled = startIndex === 0;
+        nextBtn.disabled = startIndex + showCount >= filteredProducts.length;
 
-                <div class="product-info">
-                    <div class="product-title">${product.title}</div>
-                    <div class="product-owner">${product.owner}</div>
-                    <div class="product-price">$${product.price.toFixed(2)}</div>
-                    <span class="product-category">${product.category}</span>
-                </div>
-
-            </div>
-        `).join('');
+        // Add cart buttons
+        container.querySelectorAll('.add-cart').forEach(btn => {
+            btn.addEventListener('click', e => addToCart(parseInt(e.currentTarget.dataset.id)));
+        });
     }
 
-    updateNavigation();
-}
+    // --- Pagination ---
+    nextBtn.addEventListener('click', () => { startIndex += showCount; renderProducts(); });
+    prevBtn.addEventListener('click', () => { startIndex -= showCount; renderProducts(); });
 
+    // --- Filters ---
+    searchInput.addEventListener('input', applyFilters);
 
-function updateNavigation() {
-    const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
-    document.getElementById('pageInfo').textContent = `Page ${currentPage} of ${totalPages}`;
-    document.getElementById('prevBtn').disabled = currentPage === 1;
-    document.getElementById('nextBtn').disabled = currentPage >= totalPages;
-}
-
-function nextPage() {
-    const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
-    if (currentPage < totalPages) {
-        currentPage++;
-        displayProducts();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-}
-
-function previousPage() {
-    if (currentPage > 1) {
-        currentPage--;
-        displayProducts();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-}
-
-function applyFilters() {
-    const category = document.getElementById('categoryFilter').value;
-    const maxPrice = parseFloat(document.getElementById('priceFilter').value) || Infinity;
-    const searchTerm = document.getElementById('searchFilter').value.toLowerCase();
-
-    filteredProducts = products.filter(product => {
-        const matchesCategory = category === 'all' || product.category === category;
-        const matchesPrice = product.price <= maxPrice;
-        const matchesSearch = product.title.toLowerCase().includes(searchTerm) ||
-            product.owner.toLowerCase().includes(searchTerm);
-
-        return matchesCategory && matchesPrice && matchesSearch;
+    categoryList.querySelectorAll('.category-item').forEach(item => {
+        item.addEventListener('click', () => {
+            categoryList.querySelectorAll('.category-item').forEach(i => i.classList.remove('active'));
+            item.classList.add('active');
+            applyFilters();
+        });
     });
 
-    currentPage = 1;
-    displayProducts();
-}
+    sortBy.addEventListener('change', applyFilters);
 
-function resetFilters() {
-    document.getElementById('categoryFilter').value = 'all';
-    document.getElementById('priceFilter').value = '';
-    document.getElementById('searchFilter').value = '';
-    filteredProducts = [...products];
-    currentPage = 1;
-    displayProducts();
-}
+    function applyFilters() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const selectedCat = document.querySelector('.category-item.active')?.dataset.cat || 'All';
+        const sortVal = sortBy.value;
 
-displayProducts();
+        filteredProducts = products.filter(p => {
+            const matchesSearch = p.title.toLowerCase().includes(searchTerm) || p.owner.toLowerCase().includes(searchTerm);
+            const matchesCategory = selectedCat === 'All' || p.category === selectedCat;
+            return matchesSearch && matchesCategory;
+        });
+
+        if (sortVal === 'price-asc') filteredProducts.sort((a,b) => a.price - b.price);
+        if (sortVal === 'price-desc') filteredProducts.sort((a,b) => b.price - a.price);
+        if (sortVal === 'owner') filteredProducts.sort((a,b) => a.owner.localeCompare(b.owner));
+
+        startIndex = 0;
+        renderProducts();
+    }
+
+    // --- Cart ---
+    function addToCart(id) {
+        const existing = cart.find(c => c.id === id);
+        if (existing) existing.qty++;
+        else cart.push({ id, qty: 1 });
+        renderCart();
+        openCart();
+    }
+
+    function renderCart() {
+        cartList.innerHTML = '';
+        if (!cart.length) {
+            cartList.innerHTML = '<p>Your cart is empty.</p>';
+            subtotalEl.textContent = '$0.00';
+            totalEl.textContent = '$0.00';
+            return;
+        }
+
+        let subtotal = 0;
+        cart.forEach(item => {
+            const p = products.find(prod => prod.id === item.id);
+            subtotal += p.price * item.qty;
+
+            const el = document.createElement('div');
+            el.className = 'cart-item';
+            el.innerHTML = `
+                <img src="${p.img}" alt="${p.title}">
+                <div class="cart-info">
+                    <h4>${p.title}</h4>
+                    <p>${p.owner}</p>
+                    <p>$${(p.price * item.qty).toFixed(2)}</p>
+                    <div>
+                        <button class="decrease" data-id="${p.id}">-</button>
+                        <span>${item.qty}</span>
+                        <button class="increase" data-id="${p.id}">+</button>
+                    </div>
+                </div>
+            `;
+            cartList.appendChild(el);
+        });
+
+        subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+        totalEl.textContent = `$${(subtotal + 5).toFixed(2)}`; // shipping
+
+        cartList.querySelectorAll('.increase').forEach(btn => {
+            btn.addEventListener('click', e => {
+                const id = parseInt(e.currentTarget.dataset.id);
+                cart.find(c => c.id === id).qty++;
+                renderCart();
+            });
+        });
+
+        cartList.querySelectorAll('.decrease').forEach(btn => {
+            btn.addEventListener('click', e => {
+                const id = parseInt(e.currentTarget.dataset.id);
+                const item = cart.find(c => c.id === id);
+                item.qty--;
+                if (item.qty <= 0) cart = cart.filter(c => c.id !== id);
+                renderCart();
+            });
+        });
+
+        document.getElementById('cartBadge').textContent = cart.reduce((a,b) => a+b.qty, 0);
+    }
+
+    function openCart() { cartSidebar.classList.add('open'); }
+    function closeCart() { cartSidebar.classList.remove('open'); }
+
+    cartBtn.addEventListener('click', openCart);
+    closeCartBtn.addEventListener('click', closeCart);
+
+    renderProducts();
+    renderCart();
+});

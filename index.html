@@ -1,53 +1,137 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Listing</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Beauty Product Listing</title>
+
+    <!-- Remix Icon -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-    <div class="container">
-        <header>
-            <h1>🛍️ Product Store</h1>
-            <p>Discover amazing products from various sellers</p>
+    <div class="wrap">
+
+        <!-- HEADER -->
+        <header class="site-header">
+            <div class="brand">
+                <div class="logo"><i class="ri-emoji-sticker-line" style="font-size:20px;"></i></div>
+                <div>
+                    BioAqua
+                    <div style="font-weight:400; font-size:12px; opacity:0.95;">Natural • Clean • Glow</div>
+                </div>
+            </div>
+
+            <nav class="nav" aria-label="Top Navigation">
+                <a href="#">Home</a>
+                <a href="#">Shop</a>
+                <a href="#">Skin Care</a>
+                <a href="#">Makeup</a>
+                <a href="#">About</a>
+
+                <button class="icon-btn" id="searchToggle" title="Search"><i class="ri-search-line"></i></button>
+
+                <button class="icon-btn" id="cartBtn" aria-haspopup="true" title="Cart">
+                    <i class="ri-shopping-cart-line"></i>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+            </nav>
         </header>
 
-        <div class="filters">
-            <div class="filter-group">
-                <label>Category:</label>
-                <select id="categoryFilter">
-                    <option value="all">All Categories</option>
-                    <option value="Electronics">Electronics</option>
-                    <option value="Clothing">Clothing</option>
-                    <option value="Books">Books</option>
-                    <option value="Home">Home & Garden</option>
-                    <option value="Sports">Sports</option>
-                </select>
+        <!-- MAIN -->
+        <div class="main-grid">
 
-                <label>Max Price:</label>
-                <input type="number" id="priceFilter" placeholder="Enter max price" min="0">
+            <!-- FILTERS -->
+            <aside class="filters">
+                <h4>Filter Options</h4>
+                <div class="filter-group">
+                    <label for="search">Search</label>
+                    <input id="search" type="text" placeholder="Search products or owner...">
+                </div>
+                <div class="filter-group">
+                    <label>Category</label>
+                    <div class="category-list" id="categoryList">
+                        <div class="category-item" data-cat="All">All</div>
+                        <div class="category-item" data-cat="Skincare">Skincare</div>
+                        <div class="category-item" data-cat="Makeup">Makeup</div>
+                        <div class="category-item" data-cat="Hair">Hair</div>
+                        <div class="category-item" data-cat="Accessories">Accessories</div>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <label>Sort By</label>
+                    <select id="sortBy">
+                        <option value="default">Default</option>
+                        <option value="price-asc">Price: low → high</option>
+                        <option value="price-desc">Price: high → low</option>
+                        <option value="owner">Owner: A → Z</option>
+                    </select>
+                </div>
+            </aside>
 
-                <label>Search:</label>
-                <input type="text" id="searchFilter" placeholder="Search products...">
+            <!-- PRODUCTS -->
+            <section class="products">
+                <div class="grid" id="productGrid"></div>
 
-                <button onclick="applyFilters()">Apply Filters</button>
-                <button onclick="resetFilters()">Reset</button>
-            </div>
+                <div class="buttons">
+                    <button id="prevBtn"><i class="ri-arrow-left-s-line"></i> Previous</button>
+                    <button id="nextBtn">Next <i class="ri-arrow-right-s-line"></i></button>
+                </div>
+            </section>
+
+            <!-- RIGHT SIDEBAR: CART & CHECKOUT SUMMARY -->
+            <aside class="sidebar-right" id="cartSidebar">
+                <h4>Cart Summary</h4>
+                <small class="muted">Items in your cart</small>
+
+                <div class="cart-list" id="cartList">
+                    <div style="color:var(--muted); margin-top:12px;">Cart is empty</div>
+                </div>
+
+                <div class="summary">
+                    <div class="row">
+                        <div>Subtotal</div>
+                        <div id="subtotal">$0.00</div>
+                    </div>
+                    <div class="row">
+                        <div>Shipping</div>
+                        <div>$5.00</div>
+                    </div>
+                    <div class="row" style="font-weight:700;">
+                        <div>Total</div>
+                        <div id="total">$0.00</div>
+                    </div>
+
+                    <button class="checkout-btn" id="closeCart"><i class="ri-close-line"></i>Close</button>
+                </div>
+            </aside>
+
         </div>
 
-        <div class="product-grid" id="productGrid"></div>
-
-        <div class="navigation">
-            <button class="nav-btn" id="prevBtn" onclick="previousPage()">← Previous</button>
-            <div class="page-info" id="pageInfo"></div>
-            <button class="nav-btn" id="nextBtn" onclick="nextPage()">Next →</button>
+        <!-- FOOTER -->
+       <footer class="page-footer">
+    <div class="footer-left">
+        <i class="ri-emoji-sticker-line" style="font-size:24px; color:var(--accent-dark);"></i>
+        <div class="footer-brand">
+            BioAqua
+            <div class="footer-tagline">Clean ingredients • Cruelty-free</div>
         </div>
     </div>
+    <div class="footer-links">
+        <a href="#">Contact</a>
+        <a href="#">Privacy</a>
+        <a href="#">FAQ</a>
+    </div>
+    <div class="footer-copy">
+        &copy; <span id="year"></span> Beauty Shop. All rights reserved.
+    </div>
+</footer>
 
-    <script src="/script.js"></script>
+    </div>
+
+    <script src="./script.js"></script>
 </body>
 
 </html>
